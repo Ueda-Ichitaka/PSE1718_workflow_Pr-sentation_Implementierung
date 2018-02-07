@@ -8,8 +8,11 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{pgf} 
+\usepackage{caption}
 \hypersetup{pdftitle=Implementierungsbericht}
-
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
+\setbeamertemplate{caption}[numbered]
 
 \author{Denis Gensh, Marcel Herm, David Krah,\\
 	Eduard Kukuy, Daniel Milbaier, Richard Rudolph}
@@ -79,7 +82,7 @@
 	\section{Features}
 	\frame{\sectionpage}
 	
-		\subsection{Implementierte Kriterien}
+%		\subsection{Implementierte Kriterien}
 %		\frame{\subsectionpage}
 		
 %			\begin{frame}
@@ -134,38 +137,88 @@
 %			\end{frame}				
 			
 	
-		\subsection{Gestrichene Kriterien}
+%		\subsection{Gestrichene Kriterien}
 %		\frame{\subsectionpage}
-%		
-%			\begin{frame}
-%				\frametitle{Was gestrichen wurde}	
-%			\end{frame}
+		
+			\begin{frame}
+				\frametitle{Was gestrichen wurde}
+				\begin{itemize}
+				   	\item<2-> Öffentliche und Benutzergebundenen Workflows
+				   	% \begin{itemize}
+				   	% 	\item<2-> Workflows mit anderen Benutzern Teilen und öffentlich zugänglich machen
+				    % 	\item<3-> Zugriff und Sichtbarkeit von Workflows auf eigenen oder einzelne Benutzer beschränken
+				    % \end{itemize}
+				    \item<3-> Der Nutzer hat die Möglichkeit WPS konforme Dateien als Workflows hochzuladen
+				    
+				    \item<4-> Integrierte Ausführung der Workflows auf dem gleichen Server nur nach erfolgter Prüfung von bestimmten Kriterien, z.B. Serverlast
+				    \item<5-> Import und Export von Workflows
+				    \item<6-> Hilfesektion für Benutzerfragen	
+				\end{itemize}	
+			\end{frame}
 			
 	\section{Änderungen am Entwurf}	
 	\frame{\sectionpage}
 	
+    	\begin{frame}
+    		\frametitle{Änderungen am Client}
+    		\begin{itemize}
+    		    \item<2-> Keine Änderung der Architektur
+    		    \item<3-> Keine neuen Pages
+    		   	\item<4-> Zwei neue Komponenten
+    		   	\begin{itemize}
+    		   		\item<5-> Process-Dialog
+    		    	\item<6-> Result-Dialog
+    		    \end{itemize}
+    		    \item<7-> Viele zusätzliche Methoden
+    		\end{itemize}	
+    	\end{frame}
+    	
+    	\begin{frame}
+    		\frametitle{Beispiel EditorComponent}
+    		
+    		\begin{figure}[h]
+                \begin{subfigure}{0.3\textwidth}
+                    \includegraphics[width=0.9\linewidth]{images/editor-1.png} 
+                \end{subfigure}
+                \begin{subfigure}{0.3\textwidth}
+                    \includegraphics[width=0.9\linewidth]{images/editor-2.png}
+                \end{subfigure}
+                \caption{Vergleich der Editor-Klasse im Entwurf und nach der Implementierung}
+                \label{fig:compateEditor}
+            \end{figure}
+            
+    	\end{frame}
+    	
+	    \begin{frame}
+	        \frametitle{Änderungen am Server}
+	        \begin{itemize}
+	            \item<2-> Kleinere Änderungen der Datenbank
+	            \item<3-> Kleinere Änderungen der REST API
+	            \item<4-> Anderes Paket für Cron
+	        \end{itemize}
+	    \end{frame}    	
+
 	\section{Zeitplanung}
 	\frame{\sectionpage}
 	
 	\section{Zahlen und Statistiken}
 	\frame{\sectionpage}
 	
-		\subsection{Zahlen}
-		\frame{\subsectionpage}
+%		\subsection{Zahlen}
+%		\frame{\subsectionpage}
 			\begin{frame}
 				\frametitle{Ein paar Zahlen}
 				\begin{itemize}
-					\item Lines of Code: ca 15000
-					\item Commits: ca 370 Commits
-					\item Dateien:					
+					\item<2-> Lines of Code: ca 15000
+					\item<3-> Commits: ca 370 Commits
 				\end{itemize}	
 			\end{frame}
 			
-		\subsection{Statistiken}
-		\frame{\subsectionpage}
+	%	\subsection{Statistiken}
+%		\frame{\subsectionpage}
 		
 			\begin{frame}
-				\frametitle{GitHub Insights Pulse}
+				\frametitle{GitHub Insights - Pulse}
 				\begin{figure}[ht] 
 					\centering
 					\includegraphics[scale=0.50, trim= 1cm 0 0 0]{pulse.png}
@@ -174,36 +227,16 @@
 			\end{frame}	
 		
 			\begin{frame}
-				\frametitle{GitHub Insights Contributors}
+				\frametitle{GitHub Insights - Contributors}
 				\begin{figure}[ht] 
 					\centering
 					\includegraphics[scale=0.30, trim= 1cm 0 0 0]{contributors.png}
 					\label{fig2}
 				\end{figure}
 			\end{frame}	
-			
-%			\begin{frame}
-%				\frametitle{git fame}
-%				\begin{figure}[ht] 
-%					\centering
-%					\includegraphics[scale=0.85, trim= .5cm 0 0 0]{git-fame.png}
-%					\caption{git fame}
-%					\label{fig1}
-%				\end{figure} 
-%			\end{frame}
-%			
-%			\begin{frame}
-%				\frametitle{git lines}
-%				\begin{figure}[ht] 
-%					\centering
-%					\includegraphics[scale=0.650, trim= 1cm 0 0 0]{git-lines.png}
-%					\caption{git lines}
-%					\label{fig2}
-%				\end{figure} 
-%			\end{frame}
 	
 			\begin{frame}
-				\frametitle{List of authors}
+				\frametitle{Gitstats - List of authors}
 				\begin{figure}[ht] 
 					\centering
 					\includegraphics[scale=0.45, trim= 1cm 0 0 0]{authors.png}
@@ -212,7 +245,7 @@
 			\end{frame}
 			
 			\begin{frame}
-				\frametitle{Lines of Code per Author}
+				\frametitle{Gitstats - Lines of Code per Author}
 				\begin{figure}[ht] 
 					\centering
 					\includegraphics[scale=0.50, trim= 1cm 0 0 0]{lines_of_code_by_author.png}
@@ -221,12 +254,18 @@
 			\end{frame}
 			
 			\begin{frame}
-				\frametitle{Commits per Author}
+				\frametitle{Gitstats - Commits per Author}
 				\begin{figure}[ht] 
 					\centering
 					\includegraphics[scale=0.50, trim= 1cm 0 0 0]{commits_by_author.png}
 					\label{fig5}
 				\end{figure}
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{}
+				\centering
+				\Huge Fragen?
 			\end{frame}
 	
 \end{document}
